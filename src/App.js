@@ -7,7 +7,6 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [shows, setShows] = useState([]);
 
-
   const fetchShows = async () => {
     try {
       const data = await axios.get(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
@@ -31,8 +30,8 @@ function App() {
           <div className="shows">
             {shows.length ? shows.map(item => {
               const { show } = item
-              let summary = show.summary ? show.summary.replace('<p>', '') : null
-              summary = summary ? summary.replace(/<[^>]+>/g, '') : 'No Summary'
+              //take out HTML tags ex: <p></p>
+              let summary = show.summary ? show.summary.replace(/<[^>]+>/g, '') : 'No Summary'
               return (
                 <div className="row clear show">
                   <img src={show.image ? show.image.medium : 'https://house.utah.gov/wp-content/uploads/2019/01/Image-Coming-Soon-768x768.jpg'} alt="show" className="show-image column large-2" />
@@ -46,7 +45,6 @@ function App() {
             }) : <h1 style={{textAlign: 'center'}}>Go Search Some Shows!</h1>}
           </div>
         </main>
-
       </div>
     </div>
   );
@@ -59,8 +57,3 @@ export default App;
 // The initial page will have a text input and button.
 // Successfully make the api call
 // Display the results in a view that is human readable.
-
-
-// Tasks:
-// create input
-// create call upon click
