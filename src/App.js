@@ -8,12 +8,16 @@ function App() {
   const [shows, setShows] = useState([]);
 
   const fetchShows = async () => {
-    try {
-      const data = await axios.get(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
-      console.log(data.data)
-      setShows(data.data)
-    } catch (e) {
-      alert(`${e.message}`)
+    if(inputValue) {
+      try {
+        const data = await axios.get(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
+        setShows(data.data)
+      } catch (e) {
+        console.log(e)
+        alert(`${e}`)
+      }
+    } else {
+      alert('Input invalid')
     }
   }
 
