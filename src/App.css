@@ -36,6 +36,12 @@
   text-align: left;
 }
 
+.error {
+  color: red;
+  position: relative;
+
+}
+
 .search-button {
   margin-left: 15px;
   position: relative;
