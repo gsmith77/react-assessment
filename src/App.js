@@ -13,7 +13,9 @@ function App() {
   const fetchShows = async () => {
     if (inputValue) {
       const data = await axios.get(`https://api.tvmaze.com/search/shows?q=${inputValue}`)
-      setShows(data.data)
+      if (data && data.data) {
+        setShows(data.data)
+      }
       setErrorMessage(null)
     } else {
       setErrorMessage('Input Invalid')
