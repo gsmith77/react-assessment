@@ -22,11 +22,15 @@ function App() {
     }
   }
 
+  const updateSearchInput = (e) => {
+    setInputValue(e.target.value)
+  }
+
   return (
     <div className="App">
       <div className="header">Show Finder</div>
       <div style={{height: shows.length ? "100%" : "100vh"}} className="border">
-        <SearchBar fetchShows={fetchShows} inputValue={inputValue} setInputValue={setInputValue} errorMessage={errorMessage} />
+        <SearchBar fetchShows={fetchShows} inputValue={inputValue} onChange={updateSearchInput} errorMessage={errorMessage} />
         <main>
           <div className="shows">
             <ListOfShows shows={shows} />
